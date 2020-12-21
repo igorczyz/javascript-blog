@@ -206,6 +206,18 @@ function addClickListenersToAuthors() {
 
 addClickListenersToAuthors();
 
+function calculateTagsParams(tags){
+  for(let tag in tags){
+    console.log(tag + ' is used ' + tags[tag] + ' times');
+    if(tags[tag] > params.max){
+      params.max = tags[tag]
+    }
+    else(tags[tag] < params.min)
+    params.min = tags[tag]
+  }
+  }
+
+
 function generateTags(){
   /* [NEW] create a new variable allTags with an empty object */
   let allTags = {};
@@ -244,7 +256,18 @@ function generateTags(){
   /* [NEW] find list of tags in right column */
   const tagList = document.querySelector('.tags');
 
+  const tagsParams = calculateTagsParams(allTags);
+  console.log('tagsParams:', tagsParams)
+  
+  /* [NEW] creat variable for all links HTLM code */
+  let allTagsHTML = '';
+  /* [NEW] START LOOP: for each tag in allTags: */
+  for(let tag in allTags){
+    /*[NEW] generate code of a link ad add it to allTagsHTML */
+    allTagsHTML += tag + ' (' + allTags[tag] + ') ';
+  }
+  /* [NEW] END LOOP: for each tag in allTags: */
+
   /* [NEW] add html from allTags to tagList */
-  //tagList.innerHTML = allTags.join(' ');
-  console.log(allTags);
+  tagList.innerHTML = allTags.join(' ');
 }
