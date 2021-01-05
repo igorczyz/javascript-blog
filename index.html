@@ -181,11 +181,7 @@
               <h2 class="section-title">Tags</h2>
               <ul class="list tags">
               <ul class="list tags right-column">
-                <li><a href="#">design</a> <span>(6)</span></li>
-                <li><a href="#">code</a> <span>(5)</span></li>
-                <li><a href="#">tutorials</a> <span>(4)</span></li>
-                <li><a href="#">reviews</a> <span>(4)</span></li>
-                <li><a href="#">news</a> <span>(6)</span></li>
+               
               </ul>
               </ul>
               <h2 class="section-title">Authors</h2>
@@ -215,6 +211,26 @@
           </main>
         </div>
       </div>
+      <script id="template-article-link" type="text/x-handlebars-template">
+        <li><a href="#{{ id }}"><span>{{ title }}</span></a></li>
+      </script>
+      <script id="template-articleTag-link" type="text/x-handlebars-template">
+        <li><a href="#tag-{{ name }}">{{ name }}</a></li>
+      </script>
+      <script id="template-articleAuthor-link" type="text/x-handlebars-template">
+        <a href="#author-{{ name }}">{{ title }}</a>
+      </script>
+      <script id="template-tagCloud-link" type="text/x-handlebars-template">
+        {{#each tags}}
+        <li><a href="#tag-{{ tag }}" class="{{ className }}">{{ tag }} ({{ count }})</a></li>
+        {{/each}}
+      </script>
+      <script id="template-articleAuthor-link" type="text/x-handlebars-template">
+        {{#each authors}}
+        <li><a href="#author-{{ author }}" class="author-name"></a>{{ author }} ({{ count }})</a></li>
+        {{/each}}
+      </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
