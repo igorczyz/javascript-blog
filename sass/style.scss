@@ -107,6 +107,21 @@ body {
   }
 }
 
+/* Tags */
+.right-column {
+  li {
+    display: inline;
+  }
+}
+.tag-size-0 {
+  font-size: 100%;
+  color: pink;
+}
+.tag-size-1 {
+  font-size: 120%;
+  color: green;
+}
+
 /* Post */
 
 .post {
