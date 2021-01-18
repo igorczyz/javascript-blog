@@ -152,7 +152,7 @@ function generateAuthors() {
   /* "NEW" find wrapper of authors in right column */
   const authorLists = document.querySelector(optAuthorListSelector);
 
-  const tagsParams = calculateTagsParams(allAuthors);
+  //const tagsParams = calculateTagsParams(allAuthors);
   /* "NEW" creat variable for all links html code */
 
   const allAuthorsData = {authors: []};
@@ -163,7 +163,7 @@ function generateAuthors() {
     allAuthorsData.authors.push({
       author: author,
       count: allAuthors[author],
-      className: calculateTagClass(allAuthorsData[author], tagsParams)
+      //className: calculateTagClass(allAuthorsData[author], tagsParams)
     });
   }
   /* "NEW" add HTML from allAuthorsHTML to tagList */
@@ -212,7 +212,6 @@ function addClickListenersToAuthors() {
     /* END LOOP: for each link */
   }
 }
-
 addClickListenersToAuthors();
 
 function calculateTagsParams(tags){
@@ -259,7 +258,7 @@ function generateTags(){
     for (let tag of articleTagsArray){
       /* generate HTML of the link */
       //let linkHTML= '<li><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li>';
-      const linkHTMLData = {id: tag, title: tag};
+      const linkHTMLData = {name: tag,};
       const linkHTML = templates.tagArticleLink(linkHTMLData);
       /* add generated code to html variable */
       html = html + linkHTML;
