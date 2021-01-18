@@ -133,15 +133,11 @@ function generateAuthors() {
   for (let article of articles) {
     /* find tags wrapper */
     const authorWrapper = article.querySelector(optAuthorSelector);
-    /* make html variable with empty string */
-    let html = '';
     /* get author from data-author attribute */
     const articleAuthor = article.getAttribute('data-author');
     /* generate HTML of the link */
-    const linkHTMLData = {name: articleAuthor};
-    const linkHTML = templates.articleAuthorLink(linkHTMLData);
-    /* add generated code to html variable */
-    html = html + linkHTML;
+    const linkHTMLData = {name: articleAuthor, title: articleAuthor};
+    const linkHTML = templates.authorArticleLink(linkHTMLData);
     /* "NEW" chech if the link is not already in allAuthors */
     if(!allAuthors[articleAuthor]) {
       /* "NEW" add generated code to allAuthors array */
@@ -150,7 +146,7 @@ function generateAuthors() {
       allAuthors[articleAuthor] ++;
     } 
     /* insert html of all link into the tags wrapper */
-    authorWrapper.innerHTML = html;
+    authorWrapper.innerHTML = linkHTML;
     /* END LOOP for every article */
   }
   /* "NEW" find wrapper of authors in right column */
@@ -262,7 +258,9 @@ function generateTags(){
     /* START LOOP: for each tag */
     for (let tag of articleTagsArray){
       /* generate HTML of the link */
-      let linkHTML= '<li><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li>';
+      //let linkHTML= '<li><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li>';
+      const linkHTMLData = {id: tag, title: tag};
+      const linkHTML = templates.tagArticleLink(linkHTMLData);
       /* add generated code to html variable */
       html = html + linkHTML;
       /* [NEW] check if this link is NOT already in allTags */
@@ -281,7 +279,7 @@ function generateTags(){
   /* [NEW] find list of tags in right column */
   const tagList = document.querySelector('.tags');
   const tagsParams = calculateTagsParams(allTags);
-  console.log('tagsParams:', tagsParams);
+  //console.log('tagsParams:', tagsParams);
   
   /* [NEW] creat variable for all links HTLM code */
   const allTagsData = {tags: []};
